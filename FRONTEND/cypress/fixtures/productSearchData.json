@@ -1,0 +1,60 @@
+{
+    "product": [
+        {
+            "name": "bag",
+            "relevantProduct": ["Soft Tabby Shoulder Bag", "GUCCI HORSEBIT 1955 MINI SHOULDER BAG", "Nike Sportswear Bag"]
+        },
+        {
+            "name": "car",
+            "relevantProduct":[]
+        }
+    ],
+    "brands":[
+        {
+            "name":"Coach",
+            "relevantProduct": ["Soft Tabby Shoulder Bag"]
+        },
+        {
+            "name":"Nike",
+            "relevantProduct": ["Nike Air Force 1 Shadow","Nike Court Vision Alta","Nike Sportswear Bag"]
+        },
+        {
+            "name":"Ralph Lauren",
+            "relevantProduct": ["Cable-Knit Wool-Cashmere Sweater","The Iconic Mesh Polo Shirt"]
+        },        
+        {
+            "name":"Calvin Klein",
+            "relevantProduct": ["Classic Trucker Jacket","Sleeveless Wrap Jumpsuit"]
+        },        
+        {
+            "name":"Gucci",
+            "relevantProduct": ["WOMEN'S ACE SNEAKER WITH BEE","GUCCI BLOOM EAU DE TOILETTE","GUCCI HORSEBIT 1955 MINI SHOULDER BAG"]
+        },        
+        {
+            "name":"Jo Malone",
+            "relevantProduct": ["Wood Sage & Sea Salt Cologne","English Pear & Freesia Cologne"]
+        },
+        {
+            "name":"Adidas",
+            "relevantProduct": ["CAMPUS 00S SHOES"]
+        }       
+    ],
+    "category":[
+        {
+            "name": "Bags",
+            "relevantProduct": ["Nike Sportswear Bag","GUCCI HORSEBIT 1955 MINI SHOULDER BAG","Soft Tabby Shoulder Bag"]
+        },
+        {
+            "name": "Perfume",
+            "relevantProduct": ["Wood Sage & Sea Salt Cologne","GUCCI BLOOM EAU DE TOILETTE","English Pear & Freesia Cologne"]
+        },
+        {
+            "name": "Clothes",
+            "relevantProduct": ["Classic Trucker Jacket","Sleeveless Wrap Jumpsuit","Cable-Knit Wool-Cashmere Sweater","The Iconic Mesh Polo Shirt"]
+        },
+        {
+            "name": "Shoes",
+            "relevantProduct": ["WOMEN'S ACE SNEAKER WITH BEE","Nike Air Force 1 Shadow","Nike Court Vision Alta","CAMPUS 00S SHOES"]
+        }
+    ]
+}

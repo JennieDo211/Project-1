@@ -1,0 +1,39 @@
+{
+    "validCart":{
+        "product":[ 
+            {
+                "name": "Nike Air Force 1 Shadow",
+                "brand": "Nike",
+                "desc": "Product details\r\n- Colour Shown: Phantom/Pink Oxford/White/Red Stardust\r\n- Style: DZ1847-001\r\n- Country/Region of Origin: China",
+                "price": "$300",
+                "quantity":"1"
+            },
+            {
+                "name": "Soft Tabby Shoulder Bag",
+                "brand": "Coach",
+                "desc": "Product Details - Smooth leather, suede and genuine snakeskin - Detachable strap with 54.5cm drop for shoulder or crossbody wear - 26cm (L) x 16.5cm (H) x 9cm (W)",
+                "price": "$120",
+                "quantity":"1"
+            }
+        ]
+    },
+    "invalidCart":{
+        "product":[
+            {
+                "name": "English Pear & Freesia Cologne",
+                "brand": "Jo Malone",
+                "desc": "The essence of autumn. The sensuous freshness of just-ripe pears is wrapped in a bouquet of white freesias, and mellowed by amber, patchouli and woods. Luscious and golden.",
+                "price": "$100"
+            },
+
+            {
+                "name": "Nike Air Force 1 Shadow",
+                "brand": "Nike",
+                "desc": "Product details\r\n- Colour Shown: Phantom/Pink Oxford/White/Red Stardust\r\n- Style: DZ1847-001\r\n- Country/Region of Origin: China",
+                "price": "$300",
+                "quantity":"0"
+            }
+
+        ]
+    }
+}

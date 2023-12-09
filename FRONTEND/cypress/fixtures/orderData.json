@@ -1,0 +1,14 @@
+{
+    "order":{
+        "product":[ 
+            {
+                "name": "Nike Air Force 1 Shadow",
+                "brand": "Nike",
+                "desc": "Product details\r\n- Colour Shown: Phantom/Pink Oxford/White/Red Stardust\r\n- Style: DZ1847-001\r\n- Country/Region of Origin: China",
+                "price": "$300",
+                "quantity":"1"
+            }
+        ],
+        "orderID": "656fdfd563835a198cc134af"
+    }
+}

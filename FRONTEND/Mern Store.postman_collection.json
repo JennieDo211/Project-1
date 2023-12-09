@@ -1,0 +1,1020 @@
+{
+	"info": {
+		"_postman_id": "0d30ea71-ea9e-4846-a190-5902bd2f5d13",
+		"name": "Mern Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30530621"
+	},
+	"item": [
+		{
+			"name": "Sign Up",
+			"item": [
+				{
+					"name": "Happy Case",
+					"item": [
+						{
+							"name": "Create a new user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"const passSchema = {\r",
+											"  \"type\": \"object\",\r",
+											"  \"properties\": {\r",
+											"    \"success\": {\r",
+											"      \"type\": \"boolean\"\r",
+											"    },\r",
+											"    \"token\": {\r",
+											"      \"type\": \"string\",\r",
+											"    },\r",
+											"    \"user\": {\r",
+											"      \"type\": \"object\",\r",
+											"      \"properties\": {\r",
+											"        \"id\": {\r",
+											"          \"type\": \"string\",\r",
+											"        },\r",
+											"        \"firstName\": {\r",
+											"          \"type\": \"string\",\r",
+											"        },\r",
+											"        \"lastName\": {\r",
+											"          \"type\": \"string\",\r",
+											"        },\r",
+											"        \"email\": {\r",
+											"          \"type\": \"string\",\r",
+											"        },\r",
+											"        \"role\": {\r",
+											"          \"type\": \"string\",\r",
+											"        }\r",
+											"      },\r",
+											"    }\r",
+											"  },\r",
+											"}\r",
+											"pm.test(\"Should create successfully a new user with valid data\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"    pm.response.to.have.jsonSchema(passSchema);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n \"email\": \"testernew@gmail.com\", \r\n \"firstName\": \"Tester\",\r\n \"lastName\": \"Tester\", \r\n \"password\" : \"123456\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Unhappy Case",
+					"item": [
+						{
+							"name": "Create a new user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"\r",
+											"pm.test(\"Should fail with empty Email\", function () {\r",
+											"    jsonData = pm.response.json();\r",
+											"    pm.response.to.have.status(400);\r",
+											"    pm.expect(jsonData.error).to.eql(\"You must enter an email address.\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n \"email\": \"\", \r\n \"firstName\": \"Tester\",\r\n \"lastName\": \"Tester\", \r\n \"password\" : \"123456\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a new user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Should fail with empty First Name and Last Name\", function () {\r",
+											"    jsonData = pm.response.json();\r",
+											"    pm.response.to.have.status(400);\r",
+											"    pm.expect(jsonData.error).to.eql(\"You must enter your full name.\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n \"email\": \"tester@gmail.com\", \r\n \"firstName\": \"\",\r\n \"lastName\": \"\", \r\n \"password\" : \"123456\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a new user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Should fail with invalid Email Address\", function () {\r",
+											"    jsonData = pm.response.json();\r",
+											"    pm.response.to.have.status(400);\r",
+											"    pm.expect(jsonData.error).to.eql(\"You must enter a valid email format .\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n \"email\": \"tes$%^vter@@gmail..com\", \r\n \"firstName\": \"Tester\",\r\n \"lastName\": \"Tester\", \r\n \"password\" : \"123456\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a new user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Should fail with invalid Name\", function () {\r",
+											"    jsonData = pm.response.json();\r",
+											"    pm.response.to.have.status(400);\r",
+											"    pm.expect(jsonData.error).to.eql(\"You must enter a valid name format .\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n \"email\": \"tester@gmail.com\", \r\n \"firstName\": \"Tester123!!@\",\r\n \"lastName\": \"Tester123!!@\", \r\n \"password\" : \"123456\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a new user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Should fail with invalid password\", function () {\r",
+											"    jsonData = pm.response.json();\r",
+											"    pm.response.to.have.status(400);\r",
+											"    pm.expect(jsonData.error).to.eql(\"Your password must at least 6 characters .\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n \"email\": \"tester@gmail.com\", \r\n \"firstName\": \"Tester\",\r\n \"lastName\": \"Tester\", \r\n \"password\" : \"1234\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create a new user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Should fail with email is already exist\", function () {\r",
+											"    jsonData = pm.response.json();\r",
+											"    pm.response.to.have.status(400);\r",
+											"    pm.expect(jsonData.error).to.eql(\"That email address is already in use.\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n \"email\": \"tester@gmail.com\", \r\n \"firstName\": \"Tester\",\r\n \"lastName\": \"Tester\", \r\n \"password\" : \"123456\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "User registration and login"
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Happy Case",
+					"item": [
+						{
+							"name": "User login to website",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const schema = {\r",
+											"  \"type\": \"object\",\r",
+											"  \"properties\": {\r",
+											"    \"success\": {\r",
+											"      \"type\": \"boolean\"\r",
+											"    },\r",
+											"    \"token\": {\r",
+											"      \"type\": \"string\",\r",
+											"    },\r",
+											"    \"user\": {\r",
+											"      \"type\": \"object\",\r",
+											"      \"properties\": {\r",
+											"        \"id\": {\r",
+											"          \"type\": \"string\",\r",
+											"        },\r",
+											"        \"firstName\": {\r",
+											"          \"type\": \"string\",\r",
+											"        },\r",
+											"        \"lastName\": {\r",
+											"          \"type\": \"string\",\r",
+											"        },\r",
+											"        \"email\": {\r",
+											"          \"type\": \"string\",\r",
+											"        },\r",
+											"        \"role\": {\r",
+											"          \"type\": \"string\",\r",
+											"        }\r",
+											"      },\r",
+											"    }\r",
+											"  },\r",
+											"}\r",
+											"pm.test(\"should login successfully with all valid data\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"    pm.response.to.have.jsonSchema(schema);\r",
+											"});\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n \"email\": \"test@gmail.com\", \r\n \"password\": \"123456\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Unhappy Case",
+					"item": [
+						{
+							"name": "User login to website",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Should fail with incorrect password\", function () {\r",
+											"    jsonData = pm.response.json();\r",
+											"    pm.response.to.have.status(400);\r",
+											"    pm.expect(jsonData.error).to.eql(\"Password Incorrec\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n \"email\": \"test@gmail.com\", \r\n \"password\": \"abc123\" \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Product search",
+			"item": [
+				{
+					"name": "Happy Case",
+					"item": [
+						{
+							"name": "Get list product by name",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const schema = {\r",
+											"  \"type\": \"object\",\r",
+											"  \"properties\": {\r",
+											"    \"products\": {\r",
+											"      \"type\": \"array\",\r",
+											"      \"items\": {\r",
+											"        \"type\": \"object\",\r",
+											"        \"properties\": {\r",
+											"          \"name\": {\r",
+											"            \"type\": \"string\"\r",
+											"          },\r",
+											"          \"price\": {\r",
+											"            \"type\": \"number\"\r",
+											"          },\r",
+											"          \"imageUrl\": {\r",
+											"            \"type\": \"string\",\r",
+											"            \"format\": \"string\" \r",
+											"          },\r",
+											"          \"slug\": {\r",
+											"            \"type\": \"string\"\r",
+											"          }\r",
+											"        },\r",
+											"      }\r",
+											"    }\r",
+											"  },\r",
+											"}\r",
+											"pm.test(\"Should get all relevant products by a relative search name\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"    pm.response.to.have.jsonSchema(schema);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/product/list/search/:name",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"product",
+										"list",
+										"search",
+										":name"
+									],
+									"variable": [
+										{
+											"key": "name",
+											"value": "car"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Product filter",
+			"item": [
+				{
+					"name": "Happy Case",
+					"item": [
+						{
+							"name": "Get list product by category",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/product/list?name=all&category=bags&brands=all&min=1&max=1400&rating=0&order=0&page=1&limit=10&sortOrder=%7B%22_id%22:-1%7D",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"product",
+										"list"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "all"
+										},
+										{
+											"key": "category",
+											"value": "bags"
+										},
+										{
+											"key": "brands",
+											"value": "all"
+										},
+										{
+											"key": "min",
+											"value": "1"
+										},
+										{
+											"key": "max",
+											"value": "1400"
+										},
+										{
+											"key": "rating",
+											"value": "0"
+										},
+										{
+											"key": "order",
+											"value": "0"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "sortOrder",
+											"value": "%7B%22_id%22:-1%7D"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get all product",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/product/list?name=all&category=all&brands=all&min=1&max=1400&rating=0&order=0&page=1&limit=10&sortOrder=%7B%22_id%22:-1%7D",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"product",
+										"list"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "all"
+										},
+										{
+											"key": "category",
+											"value": "all"
+										},
+										{
+											"key": "brands",
+											"value": "all"
+										},
+										{
+											"key": "min",
+											"value": "1"
+										},
+										{
+											"key": "max",
+											"value": "1400"
+										},
+										{
+											"key": "rating",
+											"value": "0"
+										},
+										{
+											"key": "order",
+											"value": "0"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "sortOrder",
+											"value": "%7B%22_id%22:-1%7D"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get list product by brands",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/product/list/brand/:slug",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"product",
+										"list",
+										"brand",
+										":slug"
+									],
+									"variable": [
+										{
+											"key": "slug",
+											"value": "ananas"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Product details",
+			"item": [
+				{
+					"name": "Happy Case",
+					"item": [
+						{
+							"name": "Get detail product",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/product/item/:slug",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"product",
+										"item",
+										":slug"
+									],
+									"variable": [
+										{
+											"key": "slug",
+											"value": "nike"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Shopping cart",
+			"item": [
+				{
+					"name": "Create a cart",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"products\": [\r\n    {\r\n      \"product\": \"654a040dc532cb1d5156e600\",\r\n      \"quantity\": 1,\r\n      \"price\": 138\r\n    }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cart/add",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cart",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Place order",
+			"item": [
+				{
+					"name": "Create a order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cartId\": \"656d9661e3be7053ac945d54\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/order/add",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"order",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Track Order",
+			"item": [
+				{
+					"name": "View all order",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/order/me",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"order",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View order detail",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/order/:orderId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"order",
+								":orderId"
+							],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": "656d3dcc1787c1367408a234"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel order",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/order/cancel/:orderId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"order",
+								"cancel",
+								":orderId"
+							],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": "656d7d5be3be7053ac945dFF"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

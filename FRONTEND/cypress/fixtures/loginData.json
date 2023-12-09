@@ -1,0 +1,13 @@
+{
+    "email": {
+        "valid": ["test@gmail.com"],
+        "invalid": ["test", "testgmail.com", "test@@gmail.com", "@gmail.com", "te...st$^&*@gmail.com", "test@gmailcom", "test@gmail..com"],
+        "blank_space": " ",
+        "not_exist": "test2023@gmail.com"
+    },
+    "password": {
+        "valid": ["123456"],
+        "invalid": ["1234","00000000"],
+        "blank_space": "      "
+    }
+}

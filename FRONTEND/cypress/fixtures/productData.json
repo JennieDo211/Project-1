@@ -1,0 +1,18 @@
+{
+    "instockProduct":[
+        {
+            "name": "Nike Air Force 1 Shadow",
+            "brand": "Nike",
+            "desc": "Product details\r\n- Colour Shown: Phantom/Pink Oxford/White/Red Stardust\r\n- Style: DZ1847-001\r\n- Country/Region of Origin: China",
+            "price": "$300"
+        }
+    ],
+    "outstockProduct":[
+        {
+            "name": "English Pear & Freesia Cologne",
+            "brand": "Jo Malone",
+            "desc": "The essence of autumn. The sensuous freshness of just-ripe pears is wrapped in a bouquet of white freesias, and mellowed by amber, patchouli and woods. Luscious and golden.",
+            "price": "$100"
+        }
+    ]
+}
